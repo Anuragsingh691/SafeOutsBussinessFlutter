@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safeouts_bussiness/screens/FirstScreen.dart';
 import 'dart:async';
 
 import 'package:safeouts_bussiness/screens/home.dart';
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _navigateToHome(){
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (BuildContext context) => MyStatefulWidget()
+        builder: (BuildContext context) => FirstScreen()
       )
     );
   }
