@@ -94,15 +94,13 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               ListTile(
                 onTap: () {
-                  _launchPrivacy()
-                  ;
+                  _launchPrivacy();
                 },
                 leading: Icon(Icons.lock_outline, color: Colors.teal),
                 title: Text("Privacy"),
               ),
               ListTile(
-                // onTap: () { _launchURL();
-                // },
+                onTap: () { _launchURL();},
                 leading: Icon(Icons.verified_user,color: Colors.teal),
                 title: Text("Contact tracing"),
               ),
@@ -121,19 +119,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: Text("Notification"),
               ),
 
-              // ListTile(
-              //   onTap: () { _showlogout();
-              //   },
-              //   leading: Icon(Icons.logout),
-              //   title: Text("Logout"),
-              // ),
-              // ListTile(
-              //   onTap: () {  _showdelete();
-              //
-              //   },
-              //   leading: Icon(Icons.delete),
-              //   title: Text("Delete account"),
-              // ),
               SizedBox(
                 height: 80,
               ),
