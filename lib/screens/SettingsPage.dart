@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:safeouts_bussiness/screens/FirstScreen.dart';
+import 'package:safeouts_bussiness/screens/splash_screen.dart';
 import 'package:safeouts_bussiness/widget/editProfile.dart';
 
 
@@ -80,9 +82,10 @@ class _SettingsPageState extends State<SettingsPage> {
 
               ),
               ListTile(
-                onTap: () {
-
-                },
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (ctx) => FirstScreen()));
+                  },
                 leading: Icon(Icons.phone,color: Colors.teal),
                 title: Text("Change phone no."),
               ),
@@ -229,10 +232,10 @@ class _SettingsPageState extends State<SettingsPage> {
           actions: <Widget>[
             FlatButton(
               textColor: Theme.of(context).accentColor,
-              // onPressed: () => Navigator.pushAndRemoveUntil(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => SplashScreen()),
-              //         (route) => false),
+              onPressed: () => Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => SplashScreen()),
+                      (route) => false),
               child: Text(
                 'Yes',
               ),
@@ -265,10 +268,10 @@ class _SettingsPageState extends State<SettingsPage> {
           actions: <Widget>[
             FlatButton(
               textColor: Theme.of(context).accentColor,
-              // onPressed: () => Navigator.pushAndRemoveUntil(
-              // context,
-              // MaterialPageRoute(builder: (context) => SplashScreen()),
-              // (route) => false),
+              onPressed: () => Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => SplashScreen()),
+              (route) => false),
               child: Text(
                 'Yes',
               ),
