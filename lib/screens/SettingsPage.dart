@@ -127,7 +127,12 @@ class _SettingsPageState extends State<SettingsPage> {
               //   leading: Icon(Icons.delete),
               //   title: Text("Delete account"),
               // ),
+              SizedBox(
+                height: 80,
+              ),
               Container(
+                width: 390.0,
+                height: 60.0,
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 1),
 
                 child: RaisedButton(
@@ -135,8 +140,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     borderRadius: BorderRadius.circular(8),
                     side: BorderSide(color: Colors.white),
                   ),
-                  color: Color(0xFF4CAF50),
-                  elevation: 0,
+                  color: Colors.teal.withOpacity(0.7),
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+
+                  elevation: 0.0,
                   onPressed: () async {
                     _showlogout();
                   },
@@ -149,15 +156,19 @@ class _SettingsPageState extends State<SettingsPage> {
                       )),
                 ),
               ),
-
+              SizedBox(
+                height: 10,
+              ),
               Container(
+                width: 390.0,
+                height: 60.0,
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 1),
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: Colors.red),
+                    side: BorderSide(color: Colors.redAccent),
                   ),
-                  color: Colors.red,
+                  color: Colors.redAccent,
                   elevation: 0,
                   onPressed: ()  {
                     _showdelete();
