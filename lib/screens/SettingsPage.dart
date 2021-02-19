@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safeouts_bussiness/widget/editProfile.dart';
 
 
 
@@ -41,10 +42,10 @@ class _SettingsPageState extends State<SettingsPage> {
           child: Column(
             children: [
               ListTile(
-                // onTap: () {
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (ctx) => EditProfile()));
-                // },
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => EditProfile()));
+                },
                 leading: ClipOval(
                   child: CircleAvatar(
                     radius: 25,
@@ -82,7 +83,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 onTap: () {
 
                 },
-                leading: Icon(Icons.phone),
+                leading: Icon(Icons.phone,color: Colors.teal),
                 title: Text("Change phone no."),
               ),
               ListTile(
@@ -90,19 +91,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   // _launchPrivacy()
                   ;
                 },
-                leading: Icon(Icons.lock_outline),
+                leading: Icon(Icons.lock_outline, color: Colors.teal),
                 title: Text("Privacy"),
               ),
               ListTile(
                 // onTap: () { _launchURL();
                 // },
-                leading: Icon(Icons.verified_user),
+                leading: Icon(Icons.verified_user,color: Colors.teal),
                 title: Text("Contact tracing"),
               ),
               ListTile(
                 // onTap: () { _launchReview();
                 // },
-                leading: Icon(Icons.messenger_outlined),
+                leading: Icon(Icons.messenger_outlined,color: Colors.teal),
                 title: Text("Give feedback"),
               ),
               ListTile(
@@ -110,7 +111,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 //   Navigator.push(context,
                 //       MaterialPageRoute(builder: (ctx) => Notifications()));
                 // },
-                leading: Icon(Icons.notification_important),
+                leading: Icon(Icons.notification_important,color: Colors.teal),
                 title: Text("Notification"),
               ),
 
@@ -138,7 +139,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: Colors.white),
+                    side: BorderSide(color: Color(0x00fbbb)),
                   ),
                   color: Colors.teal.withOpacity(0.7),
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
