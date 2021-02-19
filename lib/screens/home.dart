@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:safeouts_bussiness/screens/Safety.dart';
 import 'package:safeouts_bussiness/screens/SettingsPage.dart';
-import 'package:safeouts_bussiness/screens/add_post.dart';
+import 'package:safeouts_bussiness/screens/ProfileScreen.dart';
 import 'package:safeouts_bussiness/screens/staff.dart';
 import 'package:safeouts_bussiness/utils/dialogs.dart';
 
@@ -63,7 +63,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               Home(),
               Staff(),
               Safety(),
-              ImageCapture()
+              Profile()
 
             ],
           ),
