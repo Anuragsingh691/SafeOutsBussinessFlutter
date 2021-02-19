@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:safeouts_bussiness/screens/AdminOtp.dart';
+import 'package:safeouts_bussiness/screens/admin_homepage.dart';
 
 
 class Profile extends StatefulWidget {
@@ -16,6 +17,8 @@ class _ImageCaptureState extends State<Profile> {
 
   // Food food = Food();
   File _imageFile;
+  File imageFile;//take file path
+
 
   Future<void> _pickImage(ImageSource source) async {
     final selected = await ImagePicker().getImage(source: source);
@@ -55,6 +58,7 @@ class _ImageCaptureState extends State<Profile> {
                 SizedBox(
                   height: 10,
                 ),
+
                 ListView(
 
                   shrinkWrap: true,
@@ -68,10 +72,10 @@ class _ImageCaptureState extends State<Profile> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(5),
                           child: Container(
-                            width: MediaQuery.of(context).size.width - 20,
+                            width: MediaQuery.of(context).size.width - 370,
                             child: Image.file(
                               _imageFile,
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.scaleDown,
                             ),
                           ),
                         ),
@@ -80,13 +84,14 @@ class _ImageCaptureState extends State<Profile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             FlatButton(
-                              child: Icon(Icons.crop),
-                              // // onPressed: _cropImage,
-                            ),
-                            FlatButton(
-                              child: Icon(Icons.refresh),
+                              child: Icon(Icons.edit,),
                               onPressed: _clear,
                             ),
+                            FlatButton(
+                              child: Icon(Icons.remove),
+                              // onPressed: _cropImage,
+                            ),
+
                           ],
                         ),
 
@@ -352,7 +357,7 @@ class _ImageCaptureState extends State<Profile> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                              builder: (BuildContext context) => AdminOtp()
+                              builder: (BuildContext context) => Home()
                           )
                       );
                     },
@@ -370,5 +375,12 @@ class _ImageCaptureState extends State<Profile> {
       ),
     );
   }
-
+  _openCameraOrGallery(String param) async {
+    ImagePicker imagePicker = ImagePicker();
+    PickedFile pickedFile =
+    await imagePicker.getImage(source: ImageSource.gallery);
+    imageFile = File(pickedFile.path);
+    print("Image Path is $imageFile");
+    setState(() {});
+  }
 }
