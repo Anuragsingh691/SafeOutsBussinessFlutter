@@ -135,8 +135,10 @@ class _ImageCaptureState extends State<Profile> {
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                           color: Colors.black,
-                          fontWeight: FontWeight.bold,fontSize: 25
+                          fontWeight: FontWeight.bold,fontSize: 25,
+
                       ),
+
                     ),
                   ),
                 ),
@@ -194,7 +196,7 @@ class _ImageCaptureState extends State<Profile> {
                 //     keyboardType: TextInputType.multiline,
                 //     maxLines: null,
                 //     onChanged: (String value) {
-                //       food.Psop = value;
+                //       // food.Psop = value;
                 //     },
                 //     decoration: InputDecoration(
                 //       labelText: 'Enter 4 Digit PIN',
@@ -206,7 +208,7 @@ class _ImageCaptureState extends State<Profile> {
                 //     keyboardType: TextInputType.multiline,
                 //     maxLines: null,
                 //     onChanged: (String value) {
-                //       food.Psop = value;
+                //       // food.Psop = value;
                 //     },
                 //     decoration: InputDecoration(
                 //       hintText: 'Capacity no.pre-covid   Add values',
@@ -218,11 +220,12 @@ class _ImageCaptureState extends State<Profile> {
                 //   ),
                 // ),
                 // Container(
-                //   child: TextField(
+                //   child:
+                //   TextField(
                 //     keyboardType: TextInputType.multiline,
                 //     maxLines: null,
                 //     onChanged: (String value) {
-                //       food.Pcop = value;
+                //       // food.Pcop = value;
                 //     },
                 //     decoration: InputDecoration(
                 //       hintText: 'Capacity no.pre-after SOP Add values',
@@ -233,9 +236,15 @@ class _ImageCaptureState extends State<Profile> {
                 //     ),
                 //   ),
                 // ),
+                // Row(
+                //   children: <Widget>[
+                //     Expanded(child: TextField()),
+                //   ],
+                // )
                 SizedBox(
                   height: 10,
                 ),
+
                 Row(
                     children: <Widget>[
                       Padding(
@@ -245,18 +254,28 @@ class _ImageCaptureState extends State<Profile> {
 
                           ),),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
 
-                        child: Text('Add values',
-                          style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold, fontSize: 17,
+                      Expanded(child: TextField(
+
+                        keyboardType: TextInputType.number,
+                        maxLines: null,
+                        onChanged: (String value) {
+                          // food.Pcop = value;
+                        },
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Add values',
+                          hintStyle: TextStyle(
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold
                           ),
+                          contentPadding: EdgeInsets.only(left: 20),
                         ),
-                      )
+                      )),
                     ]),
-                SizedBox(
-                  height: 1,
-                ),
+                // SizedBox(
+                //   height: 1,
+                // ),
                 Row(
                     children: <Widget>[
                       Padding(
@@ -266,21 +285,27 @@ class _ImageCaptureState extends State<Profile> {
 
                           ),
                         ),
-
                       ),
 
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-
-                        child: Text('Add values',
-                          style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold, fontSize: 17,
+                      Expanded(child: TextField(
+                        keyboardType: TextInputType.number,
+                        maxLines: null,
+                        onChanged: (String value) {
+                          // food.Pcop = value;
+                        },
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Add values',
+                          hintStyle: TextStyle(
+                              color: Colors.teal,
+                              fontWeight: FontWeight.bold
                           ),
+                          contentPadding: EdgeInsets.only(left: 20),
                         ),
-                      )
-
+                      )),
                     ]),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Row(
                     children: <Widget>[
