@@ -46,11 +46,13 @@ class Dialogs {
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       borderSide:
-                          BorderSide(color: Theme.of(context).accentColor),
+                          BorderSide(color: Colors.teal),
+                          // Theme.of(context).accentColor),
                       child: Text(
                         'No',
                         style: TextStyle(
-                          color: Theme.of(context).accentColor,
+                          color:Colors.teal,
+                          // Theme.of(context).accentColor,
                         ),
                       ),
                       onPressed: () => Navigator.pop(context),
@@ -71,7 +73,9 @@ class Dialogs {
                         ),
                       ),
                       onPressed: () => exit(0),
-                      color: Theme.of(context).accentColor,
+
+                      color:Colors.teal
+                      // Theme.of(context).toggleableActiveColor,
                     ),
                   ),
                 ],
