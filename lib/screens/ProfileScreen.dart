@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:safeouts_bussiness/screens/AdminOtp.dart';
 import 'package:safeouts_bussiness/screens/admin_homepage.dart';
+import 'package:safeouts_bussiness/screens/staff.dart';
 
 
 class Profile extends StatefulWidget {
@@ -140,6 +141,7 @@ class _ImageCaptureState extends State<Profile> {
                       ),
 
                     ),
+
                   ),
                 ),
 
@@ -273,9 +275,7 @@ class _ImageCaptureState extends State<Profile> {
                         ),
                       )),
                     ]),
-                // SizedBox(
-                //   height: 1,
-                // ),
+
                 Row(
                     children: <Widget>[
                       Padding(
@@ -305,7 +305,7 @@ class _ImageCaptureState extends State<Profile> {
                       )),
                     ]),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Row(
                     children: <Widget>[
@@ -360,7 +360,11 @@ class _ImageCaptureState extends State<Profile> {
 
                     elevation: 0.0,
                     onPressed: () async {
-                      // _showlogout();
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Home()
+                          )
+                      );
                     },
 
                     child: Text('                  Save Changes                            ',
@@ -369,6 +373,7 @@ class _ImageCaptureState extends State<Profile> {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         )),
+
                   ),
                 ),
                 SizedBox(

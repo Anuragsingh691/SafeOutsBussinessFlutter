@@ -134,7 +134,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
 
               SizedBox(
-                height: 20,
+                height: 60,
               ),
               Container(
                 width: 390.0,
