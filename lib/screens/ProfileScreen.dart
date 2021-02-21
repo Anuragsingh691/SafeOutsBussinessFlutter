@@ -45,7 +45,7 @@ class _ImageCaptureState extends State<Profile> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           child: SingleChildScrollView(
 
             physics: BouncingScrollPhysics(),
@@ -55,9 +55,10 @@ class _ImageCaptureState extends State<Profile> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
 
-                SizedBox(
+            SizedBox(
                   height: 10,
                 ),
+
 
                 ListView(
 
@@ -118,7 +119,9 @@ class _ImageCaptureState extends State<Profile> {
 
                     ),
                   ],
+
                 ),
+
                 SizedBox(
                   height: 20,
                 ),
@@ -306,6 +309,7 @@ class _ImageCaptureState extends State<Profile> {
                     SizedBox(
                       height: 10,
                     ),
+
                     Text('Tap to add images',
                       style: TextStyle(color: Colors.grey,
 
@@ -313,9 +317,37 @@ class _ImageCaptureState extends State<Profile> {
                   ],
 
                 ),
-
                 SizedBox(
-                  height: 60,
+                  height: 50,
+                ),
+                Container(
+                  width: 390.0,
+                  height: 60.0,
+                  padding: EdgeInsets.symmetric(horizontal: 1, vertical: 1),
+
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      side: BorderSide(color: Color(0x00fbbb)),
+                    ),
+                    color: Colors.teal.withOpacity(0.7),
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+
+                    elevation: 0.0,
+                    onPressed: () async {
+                      // _showlogout();
+                    },
+
+                    child: Text('                  Save Changes                            ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
 
                 // Container(
@@ -345,31 +377,31 @@ class _ImageCaptureState extends State<Profile> {
                 //   ),
                 // ),
 
-                SizedBox(
-                  width: 390,
-                  height: 60,
-                  child: RaisedButton(
-                    child: Text('Save changes'),
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                    textColor: Colors.white,
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Home()
-                          )
-                      );
-                    },
-                    color: Colors.teal.withOpacity(0.7),
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  ),
-                )
                 // SizedBox(
-                //   height: 50,
-                // ),
+                //   width: 390,
+                //   height: 60,
+                //   child: RaisedButton(
+                //     child: Text('Save changes'),
+                //     elevation: 2,
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                //     textColor: Colors.white,
+                //     onPressed: () {
+                //       Navigator.of(context).pushReplacement(
+                //           MaterialPageRoute(
+                //               builder: (BuildContext context) => Home()
+                //           )
+                //       );
+                //     },
+                //     color: Colors.teal.withOpacity(0.7),
+                //     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                //   ),
+                // )
+
               ],
+
             ),
+
           ),
         ),
       ),
