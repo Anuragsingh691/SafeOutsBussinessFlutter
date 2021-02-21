@@ -79,8 +79,11 @@ class _ProfileState extends State<EditProfile> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                               fit: BoxFit.cover,
+
+
                               image: imageFile == null
-                                  ? NetworkImage(
+                                  ?
+                              NetworkImage(
                                   'https://clipground.com/images/person-icon-clipart-5.jpg')
                                   : FileImage(imageFile),
                             )),
@@ -209,12 +212,12 @@ class _ProfileState extends State<EditProfile> {
         contentPadding: EdgeInsets.symmetric(horizontal: 45, vertical: 20),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(28),
-          borderSide: BorderSide(color: Colors.teal[800]),
+          borderSide: BorderSide(color: Colors.teal),
           gapPadding: 10,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(28),
-          borderSide: BorderSide(color: Colors.teal[800]),
+          borderSide: BorderSide(color: Colors.teal),
           gapPadding: 10,
         ),
       ),

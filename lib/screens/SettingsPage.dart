@@ -33,14 +33,15 @@ class _SettingsPageState extends State<SettingsPage> {
             color: Colors.black,
           ),
         ),
-        title: Text(
-          'Settings',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-            fontSize: 18.0,
-          ),
-        ),
+
+        actions: <Widget>[
+      Container(
+       margin: const EdgeInsets.only(right: 120,),
+      child: Image.asset(
+        'assets/images/appbaricon.png',width: 120, height:120
+      ),
+    ),
+    ]
       ),
       body: SafeArea(
         child: SingleChildScrollView(
