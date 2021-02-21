@@ -69,14 +69,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Theme.of(context).primaryColor,
-            selectedItemColor: Theme.of(context).accentColor,
+            selectedItemColor:Colors.teal,
             unselectedItemColor: Colors.grey[500],
             elevation: 20,
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
-                  Feather.home,
+                  Icons.home,
                 ),
                 title: Text(
                   'Home',
@@ -84,7 +84,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Feather.user,
+                  Icons.supervisor_account,
                 ),
                 title: Text(
                   'Staff',
@@ -92,7 +92,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Feather.check,
+                  Icons.verified_user,
                 ),
                 title: Text(
                   'Safety',
@@ -100,7 +100,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Feather.user,
+                  Icons.account_circle,
                 ),
                 title: Text(
                   'Profile',

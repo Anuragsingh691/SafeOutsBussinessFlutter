@@ -44,6 +44,8 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+
           child: Column(
             children: [
               ListTile(
