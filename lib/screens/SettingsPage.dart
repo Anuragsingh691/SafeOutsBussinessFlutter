@@ -73,9 +73,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 subtitle: Text('+918011163850'),
               ),
-              ListTile(
-                onTap: () { _showlogout();
-                },
+              Card(
+              child:ListTile(
+
                 title: Text(
                   'Settings',
                   style: TextStyle(
@@ -84,35 +84,45 @@ class _SettingsPageState extends State<SettingsPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
               ),
-              ListTile(
+              ),
+             Card(
+              child:  ListTile(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (ctx) => FirstScreen()));
                   },
                 leading: Icon(Icons.phone,color: Colors.teal),
                 title: Text("Change phone no."),
+
               ),
-              ListTile(
+             ),
+              Card(
+              child:ListTile(
                 onTap: () {
                   _launchPrivacy();
                 },
                 leading: Icon(Icons.lock_outline, color: Colors.teal),
                 title: Text("Privacy"),
               ),
-              ListTile(
+              ),
+              Card(
+              child:ListTile(
                 onTap: () { _launchURL();},
                 leading: Icon(Icons.verified_user,color: Colors.teal),
                 title: Text("Contact tracing"),
               ),
-              ListTile(
+              ),
+              Card(
+              child:ListTile(
                 onTap: () { _launchReview();
                 },
                 leading: Icon(Icons.messenger_outlined,color: Colors.teal),
                 title: Text("Give feedback"),
               ),
-              ListTile(
+              ),
+              Card(
+              child:ListTile(
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (ctx) => Notifications()));
@@ -120,9 +130,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(Icons.notification_important,color: Colors.teal),
                 title: Text("Notification"),
               ),
+              ),
 
               SizedBox(
-                height: 80,
+                height: 20,
               ),
               Container(
                 width: 390.0,
