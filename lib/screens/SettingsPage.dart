@@ -180,7 +180,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     _showdelete();
                   },
                   child: Text('                  Delete account                       ',
-
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -192,15 +191,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 height: 20,
               ),
             ],
-
           ),
-
         ),
-
       ),
-
     );
-
   }
 
   _launchURL() async {
