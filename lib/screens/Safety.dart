@@ -20,13 +20,9 @@ class _ProfileState extends State<Safety> {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-              // const Divider(
-              //   color: Colors.black12,
-              //   height: 20,
-              //   thickness: 10,
-              //   indent: 1,
-              //   endIndent: 1,
-              // ),
+              Divider(
+                  height: 10,
+                  thickness:10),
               ListTile(
                 title: Text(
                   'Safety measures',
@@ -68,18 +64,53 @@ class _ProfileState extends State<Safety> {
                   },
                 ),
               ),
-              Card(
-                child:ListTile(
-                  leading: Text('Sanitization frequency',),
-                  title: TextField(
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                 Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text('Sanitization frequency',
+                        style: TextStyle(
+                          fontSize: 17,
+
+                        ),
+                      ),
+                    ),
+
+                    Expanded(child: TextField(
+                      keyboardType: TextInputType.number,
+                      maxLines: null,
+                      onChanged: (String value) {
+                        // food.Pcop = value;
+                      },
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: '00',
+                        hintStyle: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold
+                        ),
+                        contentPadding: EdgeInsets.only(left: 130),
+                      ),
+                    )
+                    ),
+                  ]
               ),
-              ),
+              Divider(
+                  height: 1,
+                  thickness:1),
+
+              // Card(
+              //   child:ListTile(
+              //     leading: Text('Sanitization frequency',),
+              //     title: TextField(
+              //     style: TextStyle(
+              //       color: Colors.black,
+              //       fontSize: 25,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
+              // ),
 
               ListTile(
                 title: Text(
@@ -113,24 +144,67 @@ class _ProfileState extends State<Safety> {
               SizedBox(
                 height: 10,
               ),
-
-              FloatingActionButton(
-                   tooltip: 'Increment',
-                 child: Icon(Icons.add),
-                   backgroundColor: new Color(0xFF00BFA5),
-                 ),
+              Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(left: 300),
+                      child:   FloatingActionButton(
+                        tooltip: 'Increment',
+                        child: Icon(Icons.add),
+                        // onPressed: () async {
+                        //   Navigator.of(context).pushReplacement(
+                        //       MaterialPageRoute(
+                        //           builder: (BuildContext context) => Dialogs()
+                        //       )
+                        //   );
+                        // },
+                        backgroundColor: new Color(0xFF00BFA5),
+                      ),
+                    ),
+                  ]
+              ),
               SizedBox(
                 height: 20,
               ),
-
             ],
           ),
-
         ),
-
       ),
     );
-
   }
 }
+
+  Future _asyncInputDialog(BuildContext context) async {
+    String teamName = '';
+    return showDialog(
+      context: context,
+      barrierDismissible: false, // dialog is dismissible with a tap on the barrier
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Enter current team'),
+          content: new Row(
+            children: [
+              new Expanded(
+                  child: new TextField(
+                    autofocus: true,
+                    decoration: new InputDecoration(
+                        labelText: 'Team Name', hintText: 'eg. Juventus F.C.'),
+                    onChanged: (value) {
+                      teamName = value;
+                    },
+                  ))
+            ],
+          ),
+          actions: [
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop(teamName);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 

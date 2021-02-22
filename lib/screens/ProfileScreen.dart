@@ -19,20 +19,31 @@ class _ImageCaptureState extends State<Profile> {
   // Food food = Food();
   File _imageFile;
   File imageFile;//take file path
+  File _profileImageFile;
 
-
-  Future<void> _pickImage(ImageSource source) async {
-    final selected = await ImagePicker().getImage(source: source);
+  Future<void> _pickImage() async {
+    final selected = await ImagePicker().getImage(source: ImageSource.gallery);
     setState(() {
-      _imageFile = File(selected.path);
+      _profileImageFile = File(selected.path);
     });
   }
-
   void _clear() {
     setState(() {
-      _imageFile = null;
+      _profileImageFile = null;
     });
   }
+  // Future<void> _pickImage(ImageSource source) async {
+  //   final selected = await ImagePicker().getImage(source: source);
+  //   setState(() {
+  //     _imageFile = File(selected.path);
+  //   });
+  // }
+
+  // void _clear() {
+  //   setState(() {
+  //     _imageFile = null;
+  //   });
+  // }
 
   // _save() async {
   //   uploadFoodAndImages(food, _imageFile, context);
@@ -46,81 +57,86 @@ class _ImageCaptureState extends State<Profile> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
           child: SingleChildScrollView(
 
             physics: BouncingScrollPhysics(),
 
             child: Column(
 
-              crossAxisAlignment: CrossAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-
+                Divider(
+                    height: 10,
+                    thickness:10),
             SizedBox(
                   height: 10,
                 ),
-
-
                 ListView(
-
                   shrinkWrap: true,
                   children: <Widget>[
-
-                    _imageFile != null
+                    _profileImageFile != null
                         ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width - 370,
-                            child: Image.file(
-                              _imageFile,
-                              fit: BoxFit.scaleDown,
-                            ),
-                          ),
+                        CircleAvatar(
+                          // borderRadius: BorderRadius.circular(5),
+                          backgroundImage: FileImage(_profileImageFile),
+                          radius: 40,
+                          // child: Container(
+                          //   width: MediaQuery.of(context).size.width - 370,
+                          //   child: Image.file(
+                          //     _imageFile,
+                          //     fit: BoxFit.scaleDown,
+                          //   ),
+                          // ),
                         ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            FlatButton(
-                              child: Icon(Icons.edit,),
-                              onPressed: _clear,
-                            ),
-                            FlatButton(
-                              child: Icon(Icons.remove),
-                              // onPressed: _cropImage,
-                            ),
-
-                          ],
-                        ),
-
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: <Widget>[
+                        //     FlatButton(
+                        //       child: Icon(Icons.edit,),
+                        //       onPressed: _clear,
+                        //     ),
+                        //     FlatButton(
+                        //       child: Icon(Icons.remove),
+                        //       // onPressed: _cropImage,
+                        //     ),
+                        //
+                        //   ],
+                        // ),
                       ],
                     )
-
                         : GestureDetector(
                       onTap: () {
-                        _pickImage(ImageSource.gallery);
+                        _pickImage();
                       },
-
                       child: Container(
-
-                        alignment: Alignment.topLeft,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(
-                          "assets/images/reslogo.png",
-                          width: 100,
-                          height: 50,
-                          // fit: BoxFit.cover,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                                alignment: Alignment.topLeft,
+                            child: Image.asset(
+                                  "assets/images/reslogo.png",
+                                  width: 100,
+                                  height: 50,
+                                  // fit: BoxFit.cover,
+                                ),
+                              decoration: new BoxDecoration(
+                                color: Colors.grey.withOpacity(0.3),
+                                shape: BoxShape.circle,
+                              ),
+                              width: 100,
+                            ),
+                            SizedBox(
+                              height: 7,
+                            ),
+                          ],
                         ),
-
                       ),
 
                     ),
                   ],
-
                 ),
 
                 SizedBox(
@@ -271,7 +287,8 @@ class _ImageCaptureState extends State<Profile> {
                               color: Colors.teal,
                               fontWeight: FontWeight.bold
                           ),
-                          contentPadding: EdgeInsets.only(left: 20),
+
+                          contentPadding: EdgeInsets.only(left: 10),
                         ),
                       )),
                     ]),
@@ -300,7 +317,7 @@ class _ImageCaptureState extends State<Profile> {
                               color: Colors.teal,
                               fontWeight: FontWeight.bold
                           ),
-                          contentPadding: EdgeInsets.only(left: 20),
+                          contentPadding: EdgeInsets.only(left: 10),
                         ),
                       )),
                     ]),
@@ -319,7 +336,7 @@ class _ImageCaptureState extends State<Profile> {
 
                     ]),
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
 
                 Column(
@@ -328,22 +345,18 @@ class _ImageCaptureState extends State<Profile> {
 
                     FlatButton(
                       child: Icon(Icons.add,size: 50 ),
-
                       // onPressed: _pickImage,
                     ),
                     SizedBox(
                       height: 10,
                     ),
-
                     Text('Tap to add images',
                       style: TextStyle(color: Colors.grey,
-
                       ),),
                   ],
-
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 40,
                 ),
                 Container(
                   width: 390.0,
@@ -366,8 +379,7 @@ class _ImageCaptureState extends State<Profile> {
                           )
                       );
                     },
-
-                    child: Text('                  Save Changes                            ',
+                    child: Text('                  Save Changes                ',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,

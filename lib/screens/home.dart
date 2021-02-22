@@ -64,7 +64,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               Staff(),
               Safety(),
               Profile()
-
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
