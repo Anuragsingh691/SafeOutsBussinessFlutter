@@ -250,7 +250,6 @@ class _ImageCaptureState extends State<Profile> {
                 Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(3.0),
                         child: Text('Capacity no.pre-covid',
                           style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,   fontSize: 17,
 
@@ -279,7 +278,6 @@ class _ImageCaptureState extends State<Profile> {
                 Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(3.0),
                         child: Text('Capacity no.after SOP',
                           style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,   fontSize: 17,
 
