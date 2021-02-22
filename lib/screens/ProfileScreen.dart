@@ -368,6 +368,7 @@ class _ImageCaptureState extends State<Profile> {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
+                          color: Colors.grey,
                         ),
                       ),
                     ),
