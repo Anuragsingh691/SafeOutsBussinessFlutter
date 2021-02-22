@@ -22,7 +22,7 @@ class _ProfileState extends State<Staff> {
         ),
       ),
       body: Center(
-        child: Text('Hello Staff'),
+        child: Text('staff screen is under development'),
 
       ),
     );

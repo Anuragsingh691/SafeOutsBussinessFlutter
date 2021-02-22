@@ -54,8 +54,8 @@ class _ImageCaptureState extends State<Profile> {
     return Scaffold(
       body: Container(
 
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        // width: MediaQuery.of(context).size.width,
+        // height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
           child: SingleChildScrollView(
@@ -63,7 +63,7 @@ class _ImageCaptureState extends State<Profile> {
             physics: BouncingScrollPhysics(),
 
             child: Column(
-
+              crossAxisAlignment: CrossAxisAlignment.start,
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Divider(
@@ -72,9 +72,9 @@ class _ImageCaptureState extends State<Profile> {
             SizedBox(
                   height: 10,
                 ),
-                ListView(
-                  shrinkWrap: true,
-                  children: <Widget>[
+                // ListView(
+                //   shrinkWrap: true,
+                //   children: <Widget>[
                     _profileImageFile != null
                         ? Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
@@ -90,7 +90,9 @@ class _ImageCaptureState extends State<Profile> {
                           //     fit: BoxFit.scaleDown,
                           //   ),
                           // ),
+
                         ),
+
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.center,
                         //   children: <Widget>[
@@ -106,6 +108,7 @@ class _ImageCaptureState extends State<Profile> {
                         //   ],
                         // ),
                       ],
+
                     )
                         : GestureDetector(
                       onTap: () {
@@ -113,6 +116,7 @@ class _ImageCaptureState extends State<Profile> {
                       },
                       child: Container(
                         child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Container(
                                 alignment: Alignment.topLeft,
@@ -122,10 +126,12 @@ class _ImageCaptureState extends State<Profile> {
                                   height: 50,
                                   // fit: BoxFit.cover,
                                 ),
+
                               decoration: new BoxDecoration(
                                 color: Colors.grey.withOpacity(0.3),
                                 shape: BoxShape.circle,
                               ),
+
                               width: 100,
                             ),
                             SizedBox(
@@ -134,11 +140,9 @@ class _ImageCaptureState extends State<Profile> {
                           ],
                         ),
                       ),
-
                     ),
-                  ],
-                ),
-
+                  // ],
+                // ),
                 SizedBox(
                   height: 20,
                 ),
@@ -155,7 +159,7 @@ class _ImageCaptureState extends State<Profile> {
                           fontWeight: FontWeight.bold,fontSize: 25,
 
                       ),
-
+                      contentPadding: EdgeInsets.only(left: 10),
                     ),
 
                   ),
@@ -174,9 +178,12 @@ class _ImageCaptureState extends State<Profile> {
                     decoration: InputDecoration(
                       hintText: "Restaurant's address",
                       border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(left: 10),
 
                     ),
+
                   ),
+
                 ),
                 // Container(
                 //   child: TextField(
@@ -266,12 +273,16 @@ class _ImageCaptureState extends State<Profile> {
                 Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(3.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Text('Capacity no.pre-covid',
                           style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,   fontSize: 17,
 
-                          ),),
+                          ),
+
+                        ),
+
                       ),
+
 
                       Expanded(child: TextField(
 
@@ -296,7 +307,7 @@ class _ImageCaptureState extends State<Profile> {
                 Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(3.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Text('Capacity no.after SOP',
                           style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,   fontSize: 17,
 
@@ -327,11 +338,12 @@ class _ImageCaptureState extends State<Profile> {
                 Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(3.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Text('Pictures',
                           style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,   fontSize: 20,
 
-                          ),),
+                          ),
+                        ),
                       ),
 
                     ]),
@@ -340,19 +352,30 @@ class _ImageCaptureState extends State<Profile> {
                 ),
 
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
 
+                  children: <Widget>[
                     FlatButton(
+                      padding: const EdgeInsets.only(left: 150),
                       child: Icon(Icons.add,size: 50 ),
                       // onPressed: _pickImage,
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Tap to add images',
-                      style: TextStyle(color: Colors.grey,
-                      ),),
+                    Container(
+                      margin: const EdgeInsets.only(left: 140),
+                      child: Text('Tap to add images',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    // Text('Tap to add images',
+                    //   style: TextStyle(
+                    //     color: Colors.grey,
+                    //   ),
+                    // ),
                   ],
                 ),
                 SizedBox(
@@ -362,7 +385,6 @@ class _ImageCaptureState extends State<Profile> {
                   width: 390.0,
                   height: 60.0,
                   padding: EdgeInsets.symmetric(horizontal: 1, vertical: 1),
-
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -373,11 +395,11 @@ class _ImageCaptureState extends State<Profile> {
 
                     elevation: 0.0,
                     onPressed: () async {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Home()
-                          )
-                      );
+                      // Navigator.of(context).pushReplacement(
+                      //     MaterialPageRoute(
+                      //         builder: (BuildContext context) => Home()
+                      //     )
+                      // );
                     },
                     child: Text('                  Save Changes                ',
                         style: TextStyle(
