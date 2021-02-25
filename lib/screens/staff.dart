@@ -35,34 +35,43 @@ class _ProfileState extends State<Staff> {
                 ),
               ),
 
-              // Container(
-              //   padding: new EdgeInsets.all(1.0),
-              //   decoration: BoxDecoration(
-              //       border: Border.all(
-              //         color: Colors.grey,
-              //       ),
-              //       borderRadius: BorderRadius.all(Radius.circular(20))
-              //   ),
-              //
-              //   child:
-              //      new ListTile(
-              //       leading: new Icon(Icons.search, color: Colors.grey,),
-              //       title: new TextField(
-              //         // controller: controller,
-              //         decoration: new InputDecoration(
-              //             hintText: 'Search employee...', border: InputBorder.none,
-              //         ),
-              //         // onChanged: onSearchTextChanged,
-              //       ),
-              //       trailing: new IconButton(icon: new Icon(Icons.cancel, color: Colors.grey,), onPressed: () {
-              //         // controller.clear();
-              //         // onSearchTextChanged('');
-              //       },
-              //       ),
-              //
-              //     ),
-              //
-              // ),
+              Container(
+                margin: const EdgeInsets.only(left:15.0,right: 15.0,top: 15.0),
+                padding: const EdgeInsets.all(3.0),
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(30))
+                ),
+                child:
+                 new ListTile(
+
+                    // leading: new Icon(Icons.search, color: Colors.grey, ),
+                    title: new TextField(
+                      // controller: controller,
+                      decoration: new InputDecoration(
+                          hintText: 'Search employee...', border: InputBorder.none,
+                          // fontWeight: FontWeight.bold,
+                          // color: Colors.black54,
+                        hintStyle: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          // fontSize: 25,
+                        ),
+                      ),
+
+                      // onChanged: onSearchTextChanged,
+                    ),
+                    trailing: new IconButton(icon: new Icon(Icons.search, color: Colors.grey,), onPressed: () {
+                      // controller.clear();
+                      // onSearchTextChanged('');
+                    },
+                    ),
+
+                  ),
+
+              ),
               // Card(
               //   child: new ListTile(
               //     leading: new Icon(Icons.search, color: Colors.grey,),
@@ -230,14 +239,28 @@ class _ProfileState extends State<Staff> {
                     ),
                     alignment: Alignment(-1.7, 0),
                   ),
-                  trailing: new IconButton(icon: new Icon(Icons.edit, color: Colors.teal,),
-                    onPressed: () {
+                  trailing: Wrap(
+                    spacing: 12, // space between two icons
+                    children: <Widget>[
+                      Text("Edit",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Icon(Icons.edit, color: Colors.teal,), // icon-1
+                    ],
+                  ),
+                  // trailing: new IconButton(icon: new Icon(Icons.edit, color: Colors.teal,),
+                  //   onPressed: () {
                     // controller.clear();
                     // onSearchTextChanged('');
-                  },
+                  // },
                   ),
                 ),
-              ),
+
+
 
 
               Card(
@@ -514,13 +537,18 @@ class _ProfileState extends State<Staff> {
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
 
                   elevation: 0.0,
-                  onPressed: () async {
+                  onPressed: ()  {
+                    // _showDialog();
+                  },
+                  // onPressed: () async {
                     // Navigator.of(context).pushReplacement(
                     //     MaterialPageRoute(
-                    //         builder: (BuildContext context) => Home()
+                    //         builder: (BuildContext context) => _showDialog()
                     //     )
                     // );
-                  },
+                  // },
+                   // onPressed: _showDialog() ,
+
                   child: Text('                  Add staff                 ',
                       style: TextStyle(
                         fontSize: 20,
@@ -538,8 +566,46 @@ class _ProfileState extends State<Staff> {
         ),
       ),
     );
+
   }
+
+  _showDialog() async {
+    await showDialog<String>(
+      context: context,
+      child: new AlertDialog(
+        contentPadding: const EdgeInsets.all(16.0),
+        content: new Row(
+          children: <Widget>[
+            new Expanded(
+
+                child: new TextField(
+                  autofocus: true,
+                  decoration: new InputDecoration(
+                      labelText: 'Team Name', hintText: 'eg. Juventus F.C.'),
+                  onChanged: (value) {
+                    // teamName = value;
+                  },
+                )
+            )
+          ],
+
+        ),
+        actions: <Widget>[
+          new FlatButton(
+            child: const Text('Make changes'),
+            onPressed: () {
+              Navigator.pop(context);
+            }
+          ),
+        ],
+      ),
+    );
+  }
+
 }
+
+
+
 
 Future _asyncInputDialog(BuildContext context) async {
   String teamName = '';
@@ -559,7 +625,8 @@ Future _asyncInputDialog(BuildContext context) async {
                   onChanged: (value) {
                     teamName = value;
                   },
-                ))
+                )
+            )
           ],
         ),
         actions: [
