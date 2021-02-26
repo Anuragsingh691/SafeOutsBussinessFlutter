@@ -91,6 +91,8 @@ class _ProfileState extends State<Safety> {
                         ),
                         contentPadding: EdgeInsets.only(left: 130),
                       ),
+                      style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+
                     )
                     ),
                   ]
