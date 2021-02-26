@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-
 import 'package:image_picker/image_picker.dart';
-import 'package:safeouts_bussiness/screens/AdminOtp.dart';
-import 'package:safeouts_bussiness/screens/admin_homepage.dart';
-import 'package:safeouts_bussiness/screens/staff.dart';
+import 'package:getflutter/getflutter.dart';
 
 
 class Profile extends StatefulWidget {
@@ -16,7 +13,6 @@ class Profile extends StatefulWidget {
 
 class _ImageCaptureState extends State<Profile> {
 
-  // Food food = Food();
   File _imageFile;
   File imageFile;//take file path
   File _profileImageFile;
@@ -32,12 +28,6 @@ class _ImageCaptureState extends State<Profile> {
       _profileImageFile = null;
     });
   }
-  // Future<void> _pickImage(ImageSource source) async {
-  //   final selected = await ImagePicker().getImage(source: source);
-  //   setState(() {
-  //     _imageFile = File(selected.path);
-  //   });
-  // }
 
   // void _clear() {
   //   setState(() {
@@ -45,26 +35,20 @@ class _ImageCaptureState extends State<Profile> {
   //   });
   // }
 
-  // _save() async {
-  //   uploadFoodAndImages(food, _imageFile, context);
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
 
-        // width: MediaQuery.of(context).size.width,
-        // height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
           child: SingleChildScrollView(
 
             physics: BouncingScrollPhysics(),
-
             child: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Divider(
                     height: 10,
@@ -72,43 +56,71 @@ class _ImageCaptureState extends State<Profile> {
             SizedBox(
                   height: 10,
                 ),
-                // ListView(
-                //   shrinkWrap: true,
-                //   children: <Widget>[
                     _profileImageFile != null
-                        ? Column(
+                        ? Row(
                       // mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        CircleAvatar(
-                          // borderRadius: BorderRadius.circular(5),
-                          backgroundImage: FileImage(_profileImageFile),
-                          radius: 40,
-                          // child: Container(
-                          //   width: MediaQuery.of(context).size.width - 370,
-                          //   child: Image.file(
-                          //     _imageFile,
-                          //     fit: BoxFit.scaleDown,
-                          //   ),
-                          // ),
-
-                        ),
-
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: <Widget>[
-                        //     FlatButton(
-                        //       child: Icon(Icons.edit,),
-                        //       onPressed: _clear,
-                        //     ),
-                        //     FlatButton(
-                        //       child: Icon(Icons.remove),
-                        //       // onPressed: _cropImage,
-                        //     ),
-                        //
-                        //   ],
+                        // CircleAvatar(
+                        //   // borderRadius: BorderRadius.circular(5),
+                        //   backgroundImage: FileImage(_profileImageFile),
+                        //   radius: 40,
+                        //   // child: Container(
+                        //   //   width: MediaQuery.of(context).size.width - 370,
+                        //   //   child: Image.file(
+                        //   //     _imageFile,
+                        //   //     fit: BoxFit.scaleDown,
+                        //   //   ),
+                        //   // ),
                         // ),
-                      ],
 
+                        Container(
+                          padding: new EdgeInsets.only(left:10.0),
+                          child:GFAvatar(
+                          backgroundImage: FileImage(_profileImageFile),
+                            shape: GFAvatarShape.standard,
+                            radius: 30,
+
+                           ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+
+                              Text('                                              Update logo',
+                              style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
+                              ),
+                              textAlign: TextAlign.left,
+
+                            ),
+
+                               FlatButton(
+                                 child:Text('                                            Remove logo',
+                              style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
+                              ),
+                            ),
+                                 onPressed: _clear,
+
+                               ),
+                            // FlatButton(
+                            //   child: Text(' Update logo',
+                            //     style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
+                            //     ),
+                            //     textAlign: TextAlign.left,
+                            //   ),
+                            //   onPressed: _clear,
+                            // ),
+                            // FlatButton(
+                            //   child: Text(' Update logo',
+                            //   style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
+                            //   ),
+                            //   textAlign: TextAlign.left,
+                            // ),
+                            //   // onPressed: _cropImage,
+                            // ),
+                          ],
+                        ),
+                      ],
                     )
                         : GestureDetector(
                       onTap: () {
@@ -116,7 +128,6 @@ class _ImageCaptureState extends State<Profile> {
                       },
                       child: Container(
                         child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Container(
                                 alignment: Alignment.topLeft,
@@ -126,12 +137,10 @@ class _ImageCaptureState extends State<Profile> {
                                   height: 50,
                                   // fit: BoxFit.cover,
                                 ),
-
                               decoration: new BoxDecoration(
                                 color: Colors.grey.withOpacity(0.3),
                                 shape: BoxShape.circle,
                               ),
-
                               width: 100,
                             ),
                             SizedBox(
@@ -141,30 +150,26 @@ class _ImageCaptureState extends State<Profile> {
                         ),
                       ),
                     ),
-                  // ],
-                // ),
                 SizedBox(
                   height: 20,
                 ),
                 Container(
                   child: TextField(
-                    onChanged: (String value) {
-                      // food.Pname = value;
-                    },
+
                     decoration: InputDecoration(
                       hintText: "Restaurant's name",
                       border: InputBorder.none,
+
                       hintStyle: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,fontSize: 25,
-
                       ),
                       contentPadding: EdgeInsets.only(left: 10),
                     ),
+                    style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),
 
                   ),
                 ),
-
                 SizedBox(
                   height: 10,
                 ),
@@ -173,30 +178,17 @@ class _ImageCaptureState extends State<Profile> {
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
                     onChanged: (String value) {
-                      // food.Paddress = value;
                     },
                     decoration: InputDecoration(
                       hintText: "Restaurant's address",
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.only(left: 10),
-
                     ),
+                    style: TextStyle(color: Colors.black54),
 
                   ),
-
                 ),
-                // Container(
-                //   child: TextField(
-                //     keyboardType: TextInputType.multiline,
-                //     maxLines: null,
-                //     onChanged: (String value) {
-                //       food.Pnumber = value;
-                //     },
-                //     decoration: InputDecoration(
-                //       hintText: "Add phone no.",
-                //     ),
-                //   ),
-                // ),
+
                 SizedBox(
                   height: 20,
                 ),
@@ -210,79 +202,34 @@ class _ImageCaptureState extends State<Profile> {
                     ),
                     hintText: 'Add phone no.',
                     border: InputBorder.none,
-
                     hintStyle: TextStyle(
                         color: Colors.teal, fontWeight: FontWeight.bold
                     ),
                   ),
+                  style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold),
                 ),
-                // Container(
-                //   child: TextField(
-                //     keyboardType: TextInputType.multiline,
-                //     maxLines: null,
-                //     onChanged: (String value) {
-                //       // food.Psop = value;
-                //     },
-                //     decoration: InputDecoration(
-                //       labelText: 'Enter 4 Digit PIN',
-                //     ),
-                //   ),
+
+                //  Container(
+                //     child: PinEntryTextField(
+                //       showFieldAsBox: true,
+                //       fields: 4,
+                //     )
                 // ),
-                // Container(
-                //   child: TextField(
-                //     keyboardType: TextInputType.multiline,
-                //     maxLines: null,
-                //     onChanged: (String value) {
-                //       // food.Psop = value;
-                //     },
-                //     decoration: InputDecoration(
-                //       hintText: 'Capacity no.pre-covid   Add values',
-                //       hintStyle: TextStyle(
-                //           color: Colors.black54,
-                //           fontWeight: FontWeight.bold
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   child:
-                //   TextField(
-                //     keyboardType: TextInputType.multiline,
-                //     maxLines: null,
-                //     onChanged: (String value) {
-                //       // food.Pcop = value;
-                //     },
-                //     decoration: InputDecoration(
-                //       hintText: 'Capacity no.pre-after SOP Add values',
-                //       hintStyle: TextStyle(
-                //           color: Colors.black54,
-                //           fontWeight: FontWeight.bold
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // Row(
-                //   children: <Widget>[
-                //     Expanded(child: TextField()),
-                //   ],
-                // )
                 SizedBox(
                   height: 10,
                 ),
-
                 Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
                     children: <Widget>[
+
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.only(left:10.0),
                         child: Text('Capacity no.pre-covid',
                           style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,   fontSize: 17,
-
                           ),
-
                         ),
-
                       ),
-
 
                       Expanded(child: TextField(
 
@@ -298,16 +245,20 @@ class _ImageCaptureState extends State<Profile> {
                               color: Colors.teal,
                               fontWeight: FontWeight.bold
                           ),
-
-                          contentPadding: EdgeInsets.only(left: 10),
+                          contentPadding: EdgeInsets.only(left: 10, bottom: 30),
                         ),
-                      )),
+                        style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold),
+
+                      )
+                      ),
                     ]),
 
                 Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.only(left:10.0),
                         child: Text('Capacity no.after SOP',
                           style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold,   fontSize: 17,
 
@@ -328,12 +279,14 @@ class _ImageCaptureState extends State<Profile> {
                               color: Colors.teal,
                               fontWeight: FontWeight.bold
                           ),
-                          contentPadding: EdgeInsets.only(left: 10),
+                          contentPadding: EdgeInsets.only(left: 10, bottom: 30),
                         ),
+                        style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold),
+
                       )),
                     ]),
                 SizedBox(
-                  height: 20,
+                  height: 1,
                 ),
                 Row(
                     children: <Widget>[
@@ -348,7 +301,7 @@ class _ImageCaptureState extends State<Profile> {
 
                     ]),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
 
                 Column(
@@ -380,12 +333,12 @@ class _ImageCaptureState extends State<Profile> {
                   ],
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 Container(
                   width: 390.0,
                   height: 60.0,
-                  padding: EdgeInsets.symmetric(horizontal: 1, vertical: 1),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -395,6 +348,7 @@ class _ImageCaptureState extends State<Profile> {
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
 
                     elevation: 0.0,
+
                     onPressed: () async {
                       // Navigator.of(context).pushReplacement(
                       //     MaterialPageRoute(
@@ -402,7 +356,7 @@ class _ImageCaptureState extends State<Profile> {
                       //     )
                       // );
                     },
-                    child: Text('                  Save Changes                ',
+                    child: Text('                  Save Changes                 ',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -464,9 +418,7 @@ class _ImageCaptureState extends State<Profile> {
                 // )
 
               ],
-
             ),
-
           ),
         ),
       ),
@@ -479,5 +431,23 @@ class _ImageCaptureState extends State<Profile> {
     imageFile = File(pickedFile.path);
     print("Image Path is $imageFile");
     setState(() {});
+  }
+  void _showSnackBar(String pin, BuildContext context) {
+    final snackBar = SnackBar(
+      duration: const Duration(seconds: 3),
+      content: Container(
+        height: 80.0,
+        child: Center(
+          child: Text(
+            'Pin Submitted. Value: $pin',
+            style: const TextStyle(fontSize: 25.0),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.deepPurpleAccent,
+    );
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(snackBar);
   }
 }

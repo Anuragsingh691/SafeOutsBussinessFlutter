@@ -46,7 +46,6 @@ class _ProfileState extends State<Staff> {
                 ),
                 child:
                  new ListTile(
-
                     // leading: new Icon(Icons.search, color: Colors.grey, ),
                     title: new TextField(
                       // controller: controller,
@@ -60,7 +59,6 @@ class _ProfileState extends State<Staff> {
                           // fontSize: 25,
                         ),
                       ),
-
                       // onChanged: onSearchTextChanged,
                     ),
                     trailing: new IconButton(icon: new Icon(Icons.search, color: Colors.grey,), onPressed: () {
