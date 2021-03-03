@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:safeouts_bussiness/screens/AdminLogin.dart';
@@ -10,6 +11,12 @@ import 'package:safeouts_bussiness/screens/home.dart';
 class FirstScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    String userData() {
+      final User user = auth.currentUser;
+      final uid = user.uid;
+      return uid;
+    }
     // TODO: implement build
     return Scaffold(
       body: Center(
@@ -34,11 +41,20 @@ class FirstScreen extends StatelessWidget{
                       borderRadius: BorderRadius.all(Radius.circular(16.0))),
                   textColor: Colors.white,
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => AdminLogin()
-                        )
-                    );
+                    if(userData()!=null){
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => MyStatefulWidget()
+                          )
+                      );
+                    }
+                    else{
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => AdminLogin()
+                          )
+                      );
+                    }
                   },
                   color: Colors.teal.withOpacity(0.7),
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),

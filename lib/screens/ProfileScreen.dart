@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:getflutter/getflutter.dart';
+// import 'package:getflutter/getflutter.dart';
 
 
 class Profile extends StatefulWidget {
@@ -73,15 +73,15 @@ class _ImageCaptureState extends State<Profile> {
                         //   // ),
                         // ),
 
-                        Container(
-                          padding: new EdgeInsets.only(left:10.0),
-                          child:GFAvatar(
-                          backgroundImage: FileImage(_profileImageFile),
-                            shape: GFAvatarShape.standard,
-                            radius: 30,
-
-                           ),
-                        ),
+                        // Container(
+                        //   padding: new EdgeInsets.only(left:10.0),
+                        //   child:GFAvatar(
+                        //   backgroundImage: FileImage(_profileImageFile),
+                        //     shape: GFAvatarShape.standard,
+                        //     radius: 30,
+                        //
+                        //    ),
+                        // ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.end,

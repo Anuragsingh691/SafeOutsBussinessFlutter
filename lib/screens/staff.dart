@@ -570,33 +570,32 @@ class _ProfileState extends State<Staff> {
   _showDialog() async {
     await showDialog<String>(
       context: context,
-      child: new AlertDialog(
-        contentPadding: const EdgeInsets.all(16.0),
-        content: new Row(
-          children: <Widget>[
-            new Expanded(
-
-                child: new TextField(
-                  autofocus: true,
-                  decoration: new InputDecoration(
-                      labelText: 'Team Name', hintText: 'eg. Juventus F.C.'),
-                  onChanged: (value) {
-                    // teamName = value;
-                  },
-                )
-            )
-          ],
-
-        ),
-        actions: <Widget>[
-          new FlatButton(
-            child: const Text('Make changes'),
-            onPressed: () {
-              Navigator.pop(context);
-            }
-          ),
-        ],
-      ),
+      // child: new AlertDialog(
+      //   contentPadding: const EdgeInsets.all(16.0),
+      //   content: new Row(
+      //     children: <Widget>[
+      //       new Expanded(
+      //
+      //           child: new TextField(
+      //             autofocus: true,
+      //             decoration: new InputDecoration(
+      //                 labelText: 'Team Name', hintText: 'eg. Juventus F.C.'),
+      //             onChanged: (value) {
+      //               // teamName = value;
+      //             },
+      //           )
+      //       )
+      //     ],
+      //   ),
+      //   actions: <Widget>[
+      //     new FlatButton(
+      //       child: const Text('Make changes'),
+      //       onPressed: () {
+      //         Navigator.pop(context);
+      //       }
+      //     ),
+      //   ],
+      // ),
     );
   }
 

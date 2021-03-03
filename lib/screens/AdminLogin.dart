@@ -69,7 +69,7 @@ class AdminLogin extends StatelessWidget{
                         clearButtonMode: OverlayVisibilityMode.editing,
                         keyboardType: TextInputType.phone,
                         maxLines: 1,
-                        placeholder: 'Enter phone number with country code...',
+                        placeholder: 'Enter phone number ',
                       ),
                     ),
 
@@ -88,11 +88,8 @@ class AdminLogin extends StatelessWidget{
                     borderRadius: BorderRadius.all(Radius.circular(16.0))),
                     textColor: Colors.white,
                     onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                            builder: (BuildContext context) => AdminOtp()
-                        )
-                    );
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AdminOtp(phoneController.text)));
                   },
                   color: Colors.teal.withOpacity(0.7),
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),

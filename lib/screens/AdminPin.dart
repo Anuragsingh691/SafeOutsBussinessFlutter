@@ -36,6 +36,7 @@ class AdminPin extends StatelessWidget {
                     child: PinEntryTextField(
                       showFieldAsBox: true,
                       fields: 4,
+
                     )
                 ),
                 SizedBox(height: 20.0,),
