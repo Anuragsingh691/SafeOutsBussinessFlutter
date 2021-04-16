@@ -1,10 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-// import 'package:getflutter/getflutter.dart';
+import 'package:pin_entry_text_field/pin_entry_text_field.dart';
+import 'package:safeouts_bussiness/main.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 
+}
 class Profile extends StatefulWidget {
 
   @override
@@ -12,8 +19,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ImageCaptureState extends State<Profile> {
+  var _formKey = GlobalKey<FormState>();
+  var isLoading = false;
 
-  File _imageFile;
+
   File imageFile;//take file path
   File _profileImageFile;
 
@@ -29,13 +38,6 @@ class _ImageCaptureState extends State<Profile> {
     });
   }
 
-  // void _clear() {
-  //   setState(() {
-  //     _imageFile = null;
-  //   });
-  // }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,6 @@ class _ImageCaptureState extends State<Profile> {
 
             physics: BouncingScrollPhysics(),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Divider(
@@ -58,70 +59,28 @@ class _ImageCaptureState extends State<Profile> {
                 ),
                     _profileImageFile != null
                         ? Row(
-                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        // CircleAvatar(
-                        //   // borderRadius: BorderRadius.circular(5),
-                        //   backgroundImage: FileImage(_profileImageFile),
-                        //   radius: 40,
-                        //   // child: Container(
-                        //   //   width: MediaQuery.of(context).size.width - 370,
-                        //   //   child: Image.file(
-                        //   //     _imageFile,
-                        //   //     fit: BoxFit.scaleDown,
-                        //   //   ),
-                        //   // ),
-                        // ),
-
-                        // Container(
-                        //   padding: new EdgeInsets.only(left:10.0),
-                        //   child:GFAvatar(
-                        //   backgroundImage: FileImage(_profileImageFile),
-                        //     shape: GFAvatarShape.standard,
-                        //     radius: 30,
-                        //
-                        //    ),
-                        // ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
-
-                              Text('                                              Update logo',
+                              Text('                                                               Update logo',
                               style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
                               ),
                               textAlign: TextAlign.left,
-
                             ),
-
                                FlatButton(
-                                 child:Text('                                            Remove logo',
+                                 child:Text('                                                             Remove logo',
                               style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
                               ),
                             ),
                                  onPressed: _clear,
-
                                ),
-                            // FlatButton(
-                            //   child: Text(' Update logo',
-                            //     style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
-                            //     ),
-                            //     textAlign: TextAlign.left,
-                            //   ),
-                            //   onPressed: _clear,
-                            // ),
-                            // FlatButton(
-                            //   child: Text(' Update logo',
-                            //   style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold,   fontSize: 17,
-                            //   ),
-                            //   textAlign: TextAlign.left,
-                            // ),
-                            //   // onPressed: _cropImage,
-                            // ),
                           ],
                         ),
                       ],
                     )
+
                         : GestureDetector(
                       onTap: () {
                         _pickImage();
@@ -131,11 +90,11 @@ class _ImageCaptureState extends State<Profile> {
                           children: <Widget>[
                             Container(
                                 alignment: Alignment.topLeft,
-                            child: Image.asset(
+                            child:
+                            Image.asset(
                                   "assets/images/reslogo.png",
                                   width: 100,
                                   height: 50,
-                                  // fit: BoxFit.cover,
                                 ),
                               decoration: new BoxDecoration(
                                 color: Colors.grey.withOpacity(0.3),
@@ -170,6 +129,7 @@ class _ImageCaptureState extends State<Profile> {
 
                   ),
                 ),
+
                 SizedBox(
                   height: 10,
                 ),
@@ -209,20 +169,35 @@ class _ImageCaptureState extends State<Profile> {
                   style: TextStyle(color: Colors.teal,fontWeight: FontWeight.bold),
                 ),
 
-                //  Container(
-                //     child: PinEntryTextField(
-                //       showFieldAsBox: true,
-                //       fields: 4,
-                //     )
-                // ),
+                Container(
+                    padding: EdgeInsets.only(right:140.0, left: 10),
+                    child:
+                    PinEntryTextField(
+                      onSubmit: (String pin){
+                        showDialog(
+                            context: context,
+                            builder: (context){
+                              return AlertDialog(
+                                title: Text("Pin"),
+                                content: Text('Pin entered is $pin'),
+                              );
+                            }
+                        ); //end showDialog()
+
+                      }, // end onSubmit
+                    ),
+                    // PinEntryTextField(
+                    //   showFieldAsBox: true,
+                    //   fields: 4,
+                    // )
+                ),
+
                 SizedBox(
                   height: 10,
                 ),
                 Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-
                     children: <Widget>[
-
                       Padding(
                         padding: EdgeInsets.only(left:10.0),
                         child: Text('Capacity no.pre-covid',
@@ -231,8 +206,9 @@ class _ImageCaptureState extends State<Profile> {
                         ),
                       ),
 
-                      Expanded(child: TextField(
-
+                      Expanded
+                        (child:
+                      TextField(
                         keyboardType: TextInputType.number,
                         maxLines: null,
                         onChanged: (String value) {
@@ -346,10 +322,9 @@ class _ImageCaptureState extends State<Profile> {
                     ),
                     color: Colors.teal.withOpacity(0.7),
                     padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-
                     elevation: 0.0,
-
                     onPressed: () async {
+                      _submit();
                       // Navigator.of(context).pushReplacement(
                       //     MaterialPageRoute(
                       //         builder: (BuildContext context) => Home()
@@ -449,5 +424,34 @@ class _ImageCaptureState extends State<Profile> {
     Scaffold.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(snackBar);
+  }
+
+  void _submit() {
+    final isValid = _formKey.currentState.validate();
+    if (!isValid) {
+      return;
+    }
+    _formKey.currentState.save();
+  }
+}
+class TextEditorForPhoneVerify extends StatelessWidget {
+  final TextEditingController code;
+
+  TextEditorForPhoneVerify(this.code);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        controller: this.code,
+        maxLength: 1,
+        cursorColor: Theme.of(context).primaryColor,
+        decoration: InputDecoration(
+            hintText: "*",
+            counterText: '',
+            hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)
+        )
+    );
   }
 }

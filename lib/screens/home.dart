@@ -78,7 +78,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   Icons.home,
                 ),
                 title: Text(
-                  'Home',
+                  '',
                 ),
               ),
               BottomNavigationBarItem(
@@ -86,7 +86,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   Icons.supervisor_account,
                 ),
                 title: Text(
-                  'Staff',
+                  '',
                 ),
               ),
               BottomNavigationBarItem(
@@ -94,7 +94,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   Icons.verified_user,
                 ),
                 title: Text(
-                  'Safety',
+                  '',
                 ),
               ),
               BottomNavigationBarItem(
@@ -102,7 +102,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   Icons.account_circle,
                 ),
                 title: Text(
-                  'Profile',
+                  '',
                 ),
               ),
             ],
