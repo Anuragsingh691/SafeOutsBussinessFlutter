@@ -5,8 +5,9 @@ workflows:
     max_build_duration: 120
     environment:
       vars:
-        GCLOUD_KEY_FILE: Encrypted(...) # <-- Put your encrypted Google Cloud Key file here
-        GOOGLE_CREDENTIALS: Encrypted(...) # <-- Put your encrypted google-services.json here if publishing to Google Play
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
         FIREBASE_PROJECT: "YOUR_FIREBASE_PROJECT_NAME" # <-- Put your Firebase Project Name here
       flutter: stable
       xcode: latest
